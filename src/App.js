@@ -1,3 +1,32 @@
+import React from "react";
+import { Route, Routes } from "react-router";
+import { Link } from "react-router-dom";
+import About from "./router-tutorial/About";
+import Home from "./router-tutorial/Home";
+
+const App = () => {
+  // react-router-dom version이 5.1보다 크면 
+  // Route를 단독 사용 불가. path 대신에 elemet와 <~~/>를 안에 작성
+  return (
+    <div>
+      <ul>
+        <li>
+          <Link to='/'>홈</Link>
+        </li>
+        <li>
+          <Link to='/about'>소개</Link>
+        </li>
+      </ul>     
+      <hr /> 
+      <Routes>
+        <Route path='/' element={<Home/>} exact={true} />
+        <Route path={['/about', '/info']} element={<About/>} />
+      </Routes>
+    </div>
+  )
+} 
+
+/*
 import './App.css';
 import TodoInsert from './todoComponents/TodoInsert';
 import TodoTemplate from './todoComponents/TodoTemplate';
@@ -92,6 +121,7 @@ const App = () => {
     </div>
   );
 };
+*/
 
 /*
 function createBulkTodos() {
