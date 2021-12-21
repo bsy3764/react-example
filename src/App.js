@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router";
 import { Link } from "react-router-dom";
 import About from "./router-tutorial/About";
 import Home from "./router-tutorial/Home";
+import Profile from "./router-tutorial/Profile";
 
 const App = () => {
   // react-router-dom version이 5.1보다 크면 
@@ -11,16 +12,23 @@ const App = () => {
     <div>
       <ul>
         <li>
-          <Link to='/'>홈</Link>
+          <Link to="/">홈</Link>
         </li>
         <li>
-          <Link to='/about'>소개</Link>
+          <Link to="/about">소개</Link>
+        </li>
+        <li>
+          <Link to="/profile/velopert">velopert 프로필</Link>
+        </li>
+        <li>
+          <Link to="/profile/gildong">gildong 프로필</Link>
         </li>
       </ul>     
       <hr /> 
       <Routes>
-        <Route path='/' element={<Home/>} exact={true} />
-        <Route path={['/about', '/info']} element={<About/>} />
+        <Route path="/" element={<Home/>} exact={true} />
+        <Route path="/about" element={<About/>} />
+        <Route path="/profile/:username" element={<Profile/>} />
       </Routes>
     </div>
   )
