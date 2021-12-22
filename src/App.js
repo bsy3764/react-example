@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import About from "./router-tutorial/About";
 import Home from "./router-tutorial/Home";
 import Profile from "./router-tutorial/Profile";
+import Profiles from "./router-tutorial/Profiles";
 
 const App = () => {
   // react-router-dom version이 5.1보다 크면 
@@ -18,17 +19,26 @@ const App = () => {
           <Link to="/about">소개</Link>
         </li>
         <li>
+          <Link to="/profiles">프로필</Link>
+        </li>
+        {/* <li>
           <Link to="/profile/velopert">velopert 프로필</Link>
         </li>
         <li>
           <Link to="/profile/gildong">gildong 프로필</Link>
-        </li>
+        </li> */}
       </ul>     
       <hr /> 
       <Routes>
         <Route path="/" element={<Home/>} exact={true} />
         <Route path="/about" element={<About/>} />
-        <Route path="/profile/:username" element={<Profile/>} />
+        {/* <Route path="/profile/:username" element={<Profile/>} /> */}
+        {/* 서브 라우트를 App에서 사용하고 서브로 보내줄 곳은 Outlet 필요 */}
+        <Route path='/profiles' exact 
+              render={() => <div>사용자를 선택해 주세요</div>}/>
+          <Route path='/profiles' element={<Profiles/>}>
+              <Route path=':username' element={<Profile/>} />
+        </Route>
       </Routes>
     </div>
   )
